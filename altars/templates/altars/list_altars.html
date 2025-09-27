@@ -1,0 +1,33 @@
+{% extends 'altars/base.html' %}
+{% block content %}
+
+<div class="container mt-5">
+        <h1>Altar List</h1>
+
+        <div class="accordion" id="myAccordion">
+            {% for altar in altars %}
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading{{ altar.id }}">
+                    <button class="accordion-button {% if not forloop.first %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ altar.id }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="collapse{{ altar.id }}">
+                        <b>{{ altar.name }}</b>  
+                    </button>
+                </h2>
+                <div id="collapse{{ altar.id }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" aria-labelledby="heading{{ altar.id }}" data-bs-parent="#myAccordion">
+                    <div class="accordion-body">
+                        {% if altar.location %} {{ altar.location|default:"" }}<br> {% endif %}
+                        {% if altar.description %} {{ altar.description|default:"" }}<br> {% endif %}
+                        {% if altar.notes %} {{ altar.notes|default:"" }}<br> {% endif %}
+                        {{ altar.address1 }} {{ altar.address2|default:"" }} {{ altar.address3|default:"" }}<br>
+                        {{ altar.city }}, {{ altar.state }} {{ altar.zipcode|default:"" }}<br>
+
+                        <!-- Add more dynamic content here -->
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <li>No altars found.</li>            
+            {% endfor %}
+        </div>
+    </div>
+
+    {% endblock %}
