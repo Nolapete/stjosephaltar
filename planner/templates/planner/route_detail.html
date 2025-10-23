@@ -1,0 +1,47 @@
+{% extends 'planner/base.html' %}
+{% load leaflet_tags %}
+
+{% block content %}
+<h1>Route: {{ route.name }}</h1>
+
+<h2>Stops</h2>
+<ul>
+    {% for stop in route.stops.all %}
+    <li>{{ stop.name }} (Order: {{ stop.order }})</li>
+    {% empty %}
+    <li>No stops have been added to this route yet.</li>
+    {% endfor %}
+</ul>
+
+<h2>Add a New Stop</h2>
+<form method="post" action="{% url 'planner:add_stop_to_route' pk=route.pk %}">
+    {% csrf_token %}
+    {{ stop_form.as_p }}
+    <button type="submit">Add Stop</button>
+</form>
+
+<hr>
+
+<h2>Map View</h2>
+{% leaflet_map "gis" %}
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    function map_init_gis(map, options) {
+        var stops = JSON.parse('{{ stops_json|safe }}');
+
+        // Add markers for each stop
+        stops.forEach(function(stop) {
+            L.marker([stop.lat, stop.lng]).addTo(map).bindPopup(stop.name);
+        });
+
+        // Draw a polyline connecting the stops
+        if (stops.length > 1) {
+            var latlngs = stops.map(stop => [stop.lat, stop.lng]);
+            var polyline = L.polyline(latlngs, {color: 'blue'}).addTo(map);
+            map.fitBounds(polyline.getBounds());
+        }
+    }
+</script>
+{% endblock %}
