@@ -17,6 +17,7 @@ db.sqlite3  # Default SQLite database file
 env/
 venv/
 .venv/
+*_env/
 
 # Environment variables
 # This file contains sensitive information like API keys and database passwords.
@@ -48,3 +49,7 @@ pip-delete-this-directory.txt
 build/
 dist/
 *.egg-info/
+
+# Linode config files
+*_wsgi.py
+uwsgi.*
