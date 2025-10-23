@@ -13,9 +13,14 @@ def add_altar(request):
         form = AltarForm()
     return render(request, 'altars/add_altar.html', {'form': form})
 
+
 def list_altars(request):
-    altars = Altar.objects.all() # retrieve all the altars
+    # Use prefetch_related to retrieve all related contact and event data
+    # in a single, optimized set of queries, preventing the N+1 problem.
+    altars = Altar.objects.prefetch_related('contact_set', 'event_set').all()
     return render(request, 'altars/list_altars.html', {'altars': altars})
+
+
 
 def update_altar(request, altar_id):
     altar = Altar.objects.get(pk=altar_id)

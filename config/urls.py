@@ -1,5 +1,5 @@
 """
-URL configuration for stjosephaltar project.
+URL configuration for config project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
@@ -18,13 +18,14 @@ from django.contrib import admin
 from django.urls import path, include
 from altars import views
 
-admin.site.site_header = "stjosephaltar.org Administration"
-admin.site.site_title = "stjosephaltar.org"
+admin.site.site_header = "config.org Administration"
+admin.site.site_title = "config.org"
 admin.site.index_title = "St. Joseph Altar Admin Portal"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('landing.urls')),
     path('altars/', include('altars.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),        
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('planner/', include('planner.urls'), name='planner'),
 ]

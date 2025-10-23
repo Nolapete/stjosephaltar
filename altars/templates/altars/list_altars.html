@@ -2,32 +2,90 @@
 {% block content %}
 
 <div class="container mt-5">
-        <h1>Altar List</h1>
+    <h1>Altar List</h1>
 
-        <div class="accordion" id="myAccordion">
-            {% for altar in altars %}
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="heading{{ altar.id }}">
-                    <button class="accordion-button {% if not forloop.first %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ altar.id }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="collapse{{ altar.id }}">
-                        <b>{{ altar.name }}</b>  
-                    </button>
-                </h2>
-                <div id="collapse{{ altar.id }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" aria-labelledby="heading{{ altar.id }}" data-bs-parent="#myAccordion">
-                    <div class="accordion-body">
-                        {% if altar.location %} {{ altar.location|default:"" }}<br> {% endif %}
-                        {% if altar.description %} {{ altar.description|default:"" }}<br> {% endif %}
-                        {% if altar.notes %} {{ altar.notes|default:"" }}<br> {% endif %}
-                        {{ altar.address1 }} {{ altar.address2|default:"" }} {{ altar.address3|default:"" }}<br>
-                        {{ altar.city }}, {{ altar.state }} {{ altar.zipcode|default:"" }}<br>
+    <div class="accordion" id="myAccordion">
+        {% for altar in altars %}
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading{{ altar.id }}">
+                <button class="accordion-button {% if not forloop.first %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ altar.id }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="collapse{{ altar.id }}">
+                    <b>{{ altar.name }}</b>
+                </button>
+            </h2>
+            <div id="collapse{{ altar.id }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" aria-labelledby="heading{{ altar.id }}" data-bs-parent="#myAccordion">
+                <div class="accordion-body">
+                    <!-- Existing altar details -->
+                    {% if altar.location %} <p><b>Location:</b> {{ altar.location }}</p>{% endif %}
+                    {% if altar.established_date %} <p><b>Established:</b> {{ altar.established_date }}</p>{% endif %}
+                    {% if altar.description %} <p><b>Description:</b> {{ altar.description }}</p>{% endif %}
+                    {% if altar.notes %} <p><b>Notes:</b> {{ altar.notes }}</p>{% endif %}
+                    <p><b>Address:</b><br>
+                    {% if altar.address1 %}{{ altar.address1 }}<br>{% endif %}
+                    {% if altar.address2 %}{{ altar.address2 }}<br>{% endif %}
+                    {% if altar.address3 %}{{ altar.address3 }}<br>{% endif %}
+                    {% if altar.city %}{{ altar.city }},{% endif %} {% if altar.state %}{{ altar.state }}{% endif %} {% if altar.zipcode %}{{ altar.zipcode }}{% endif %}
+                    </p>
+                    <hr>
 
-                        <!-- Add more dynamic content here -->
+                    <!-- Nested Accordion for Contacts and Events -->
+                    <div class="accordion" id="nestedAccordion-{{ altar.id }}">
+
+                        <!-- Contacts Nested Accordion Item -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="contactHeading-{{ altar.id }}">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#contactCollapse-{{ altar.id }}" aria-expanded="false" aria-controls="contactCollapse-{{ altar.id }}">
+                                    <b>Contacts</b>
+                                </button>
+                            </h2>
+                            <div id="contactCollapse-{{ altar.id }}" class="accordion-collapse collapse" aria-labelledby="contactHeading-{{ altar.id }}" data-bs-parent="#nestedAccordion-{{ altar.id }}">
+                                <div class="accordion-body">
+                                    {% for contact in altar.contact_set.all %}
+                                        <p><b>Name:</b> {{ contact.name|default:"Not specified" }}</p>
+                                        <p><b>Type:</b> {{ contact.get_type_display|default:"Not specified" }}</p>
+                                        {% if contact.phone %} <p><b>Phone:</b> {{ contact.phone }}</p>{% endif %}
+                                        {% if contact.email %} <p><b>Email:</b> {{ contact.email }}</p>{% endif %}
+                                        {% if contact.website %} <p><b>Website:</b> <a href="{{ contact.website }}" target="_blank">{{ contact.website }}</a></p>{% endif %}
+                                        {% if not forloop.last %}<hr>{% endif %}
+                                    {% empty %}
+                                        <p>No contacts found.</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Events Nested Accordion Item -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="eventHeading-{{ altar.id }}">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eventCollapse-{{ altar.id }}" aria-expanded="false" aria-controls="eventCollapse-{{ altar.id }}">
+                                    <b>Events</b>
+                                </button>
+                            </h2>
+                            <div id="eventCollapse-{{ altar.id }}" class="accordion-collapse collapse" aria-labelledby="eventHeading-{{ altar.id }}" data-bs-parent="#nestedAccordion-{{ altar.id }}">
+                                <div class="accordion-body">
+                                    {% for event in altar.event_set.all %}
+                                        <p><b>Type:</b> {{ event.get_type_display|default:"Not specified" }}</p>
+                                        {% if event.date %} <p><b>Date:</b> {{ event.date|date:"F j, Y" }}</p>{% endif %}
+                                        {% if event.start and event.end %}
+                                            <p><b>Time:</b> {{ event.start|time:"g:i A" }} to {{ event.end|time:"g:i A" }}</p>
+                                        {% elif event.start %}
+                                            <p><b>Starts at:</b> {{ event.start|time:"g:i A" }}</p>
+                                        {% endif %}
+                                        {% if event.notes %} <p><b>Notes:</b> {{ event.notes }}</p>{% endif %}
+                                        {% if not forloop.last %}<hr>{% endif %}
+                                    {% empty %}
+                                        <p>No events found.</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            {% empty %}
-            <li>No altars found.</li>            
-            {% endfor %}
         </div>
+        {% empty %}
+        <p>No altars found.</p>
+        {% endfor %}
     </div>
+</div>
 
-    {% endblock %}
+{% endblock %}
