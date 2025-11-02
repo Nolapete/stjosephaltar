@@ -1,0 +1,317 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St. Joseph Altar Landing Page</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+
+<body>
+<div id="root">
+    <div class="min-h-screen bg-amber-50">
+        <nav class="bg-gradient-to-r from-green-800 to-green-900 text-white sticky top-0 z-50 shadow-lg">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="flex items-center justify-between h-16">
+                    <button class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                        <div class="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="lucide lucide-heart w-5 h-5 text-white fill-white">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                            </svg>
+                        </div>
+                        <span class="hidden sm:inline">St. Joseph Altars NOLA</span></button>
+                    <div class="hidden md:flex items-center gap-6">
+                        <button class="px-4 py-2 rounded-lg transition-all text-green-100 hover:bg-green-700">Home
+                        </button>
+                        <button class="px-4 py-2 rounded-lg transition-all bg-orange-600 text-white">Find Altars
+                        </button>
+                        <button data-slot="button"
+                                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5 bg-orange-600 hover:bg-orange-700 text-white">
+                            Contact Us
+                        </button>
+                    </div>
+                    <button class="md:hidden p-2 hover:bg-green-700 rounded-lg transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             class="lucide lucide-menu w-6 h-6">
+                            <line x1="4" x2="20" y1="12" y2="12"></line>
+                            <line x1="4" x2="20" y1="6" y2="6"></line>
+                            <line x1="4" x2="20" y1="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div class="min-h-screen bg-gradient-to-b from-amber-50 to-orange-50">
+            <div class="bg-gradient-to-r from-green-700 to-green-800 text-white py-16 px-6">
+                <div class="max-w-4xl mx-auto text-center"><span data-slot="badge"
+                                                                 class="inline-flex items-center justify-center rounded-md text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent [a&amp;]:hover:bg-primary/90 mb-4 bg-orange-600 text-white px-4 py-2 border-0">March 19, 2025</span>
+                    <h1 class="mb-4">New Orleans St. Joseph Altars</h1>
+                    <p class="text-green-100 text-lg max-w-2xl mx-auto">Discover
+                        altars throughout the New Orleans area. Each altar is a labor of love,
+                        open to all who wish to experience this beautiful Sicilian tradition.</p></div>
+            </div>
+            <div class="max-w-4xl mx-auto px-6 py-12">
+                <div class="mb-8"><p class="text-orange-900"><span class="font-semibold">4 altars</span> celebrating St.
+                    Joseph's Day</p></div>
+                <div class="space-y-6">
+                    <div data-slot="card"
+                         class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border-2 border-orange-200 overflow-hidden">
+                        <div data-slot="accordion" class="w-full" data-orientation="vertical">
+                            <div data-state="closed" data-orientation="vertical" data-slot="accordion-item"
+                                 class="last:border-b-0 border-0">
+                                <h3 data-orientation="vertical" data-state="closed" class="flex">
+                                    <button type="button" aria-controls="radix-:rd:" aria-expanded="false"
+                                            data-state="closed" data-orientation="vertical" id="radix-:rc:"
+                                            data-slot="accordion-trigger"
+                                            class="focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md text-left text-sm font-medium transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&amp;[data-state=open]&gt;svg]:rotate-180 px-6 py-6 hover:bg-amber-50 hover:no-underline"
+                                            data-radix-collection-item="">
+                                        <div class="flex items-start gap-4 text-left w-full">
+                                            <div class="w-12 h-12 bg-gradient-to-br from-green-600 to-green-700 rounded-full flex items-center justify-center flex-shrink-0">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     class="lucide lucide-map-pin w-6 h-6 text-white">
+                                                    <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+                                                    <circle cx="12" cy="10" r="3"></circle>
+                                                </svg>
+                                            </div>
+                                            <div class="flex-1 min-w-0"><h3 class="text-green-800 mb-2">St. Joseph's
+                                                Italian Church</h3>
+                                                <p class="text-orange-900/80">610 Old Sixth Street, New Orleans, LA
+                                                    70130</p><span data-slot="badge"
+                                                                   class="inline-flex items-center justify-center rounded-md px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent [a&amp;]:hover:bg-primary/90 mt-2 bg-orange-100 text-orange-800 border-0">Irish Channel</span>
+                                            </div>
+                                        </div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                             stroke-linecap="round" stroke-linejoin="round"
+                                             class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200">
+                                            <path d="m6 9 6 6 6-6"></path>
+                                        </svg>
+                                    </button>
+                                </h3>
+                                <div data-state="closed" id="radix-:rd:" hidden="" role="region"
+                                     aria-labelledby="radix-:rc:" data-orientation="vertical"
+                                     data-slot="accordion-content"
+                                     class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                                     style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width);"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-slot="card"
+                         class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border-2 border-orange-200 overflow-hidden">
+                        <div data-slot="accordion" class="w-full" data-orientation="vertical">
+                            <div data-state="closed" data-orientation="vertical" data-slot="accordion-item"
+                                 class="last:border-b-0 border-0">
+                                <h3 data-orientation="vertical" data-state="closed" class="flex">
+                                    <button type="button" aria-controls="radix-:rf:" aria-expanded="false"
+                                            data-state="closed" data-orientation="vertical" id="radix-:re:"
+                                            data-slot="accordion-trigger"
+                                            class="focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md text-left text-sm font-medium transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&amp;[data-state=open]&gt;svg]:rotate-180 px-6 py-6 hover:bg-amber-50 hover:no-underline"
+                                            data-radix-collection-item="">
+                                        <div class="flex items-start gap-4 text-left w-full">
+                                            <div class="w-12 h-12 bg-gradient-to-br from-green-600 to-green-700 rounded-full flex items-center justify-center flex-shrink-0">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     class="lucide lucide-map-pin w-6 h-6 text-white">
+                                                    <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+                                                    <circle cx="12" cy="10" r="3"></circle>
+                                                </svg>
+                                            </div>
+                                            <div class="flex-1 min-w-0"><h3 class="text-green-800 mb-2">American Italian
+                                                Cultural Center</h3>
+                                                <p class="text-orange-900/80">537 S Peters St, New Orleans, LA 70130</p>
+                                                <span data-slot="badge"
+                                                      class="inline-flex items-center justify-center rounded-md px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent [a&amp;]:hover:bg-primary/90 mt-2 bg-orange-100 text-orange-800 border-0">Warehouse District</span>
+                                            </div>
+                                        </div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                             stroke-linecap="round" stroke-linejoin="round"
+                                             class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200">
+                                            <path d="m6 9 6 6 6-6"></path>
+                                        </svg>
+                                    </button>
+                                </h3>
+                                <div data-state="closed" id="radix-:rf:" hidden="" role="region"
+                                     aria-labelledby="radix-:re:" data-orientation="vertical"
+                                     data-slot="accordion-content"
+                                     class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                                     style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width);"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-slot="card"
+                         class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border-2 border-orange-200 overflow-hidden">
+                        <div data-slot="accordion" class="w-full" data-orientation="vertical">
+                            <div data-state="closed" data-orientation="vertical" data-slot="accordion-item"
+                                 class="last:border-b-0 border-0">
+                                <h3 data-orientation="vertical" data-state="closed" class="flex">
+                                    <button type="button" aria-controls="radix-:rh:" aria-expanded="false"
+                                            data-state="closed" data-orientation="vertical" id="radix-:rg:"
+                                            data-slot="accordion-trigger"
+                                            class="focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md text-left text-sm font-medium transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&amp;[data-state=open]&gt;svg]:rotate-180 px-6 py-6 hover:bg-amber-50 hover:no-underline"
+                                            data-radix-collection-item="">
+                                        <div class="flex items-start gap-4 text-left w-full">
+                                            <div class="w-12 h-12 bg-gradient-to-br from-green-600 to-green-700 rounded-full flex items-center justify-center flex-shrink-0">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     class="lucide lucide-map-pin w-6 h-6 text-white">
+                                                    <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+                                                    <circle cx="12" cy="10" r="3"></circle>
+                                                </svg>
+                                            </div>
+                                            <div class="flex-1 min-w-0"><h3 class="text-green-800 mb-2">Our Lady of
+                                                Prompt Succor Church</h3>
+                                                <p class="text-orange-900/80">2320 Paris Ave, New Orleans, LA 70119</p>
+                                                <span data-slot="badge"
+                                                      class="inline-flex items-center justify-center rounded-md px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent [a&amp;]:hover:bg-primary/90 mt-2 bg-orange-100 text-orange-800 border-0">Gentilly</span>
+                                            </div>
+                                        </div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                             stroke-linecap="round" stroke-linejoin="round"
+                                             class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200">
+                                            <path d="m6 9 6 6 6-6"></path>
+                                        </svg>
+                                    </button>
+                                </h3>
+                                <div data-state="closed" id="radix-:rh:" hidden="" role="region"
+                                     aria-labelledby="radix-:rg:" data-orientation="vertical"
+                                     data-slot="accordion-content"
+                                     class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                                     style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width);"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-slot="card"
+                         class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border-2 border-orange-200 overflow-hidden">
+                        <div data-slot="accordion" class="w-full" data-orientation="vertical">
+                            <div data-state="closed" data-orientation="vertical" data-slot="accordion-item"
+                                 class="last:border-b-0 border-0">
+                                <h3 data-orientation="vertical" data-state="closed" class="flex">
+                                    <button type="button" aria-controls="radix-:rj:" aria-expanded="false"
+                                            data-state="closed" data-orientation="vertical" id="radix-:ri:"
+                                            data-slot="accordion-trigger"
+                                            class="focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md text-left text-sm font-medium transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&amp;[data-state=open]&gt;svg]:rotate-180 px-6 py-6 hover:bg-amber-50 hover:no-underline"
+                                            data-radix-collection-item="">
+                                        <div class="flex items-start gap-4 text-left w-full">
+                                            <div class="w-12 h-12 bg-gradient-to-br from-green-600 to-green-700 rounded-full flex items-center justify-center flex-shrink-0">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     class="lucide lucide-map-pin w-6 h-6 text-white">
+                                                    <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+                                                    <circle cx="12" cy="10" r="3"></circle>
+                                                </svg>
+                                            </div>
+                                            <div class="flex-1 min-w-0"><h3 class="text-green-800 mb-2">St. Anthony of
+                                                Padua Church</h3>
+                                                <p class="text-orange-900/80">4640 Canal St, New Orleans, LA 70119</p>
+                                                <span data-slot="badge"
+                                                      class="inline-flex items-center justify-center rounded-md px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent [a&amp;]:hover:bg-primary/90 mt-2 bg-orange-100 text-orange-800 border-0">Mid-City</span>
+                                            </div>
+                                        </div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                             stroke-linecap="round" stroke-linejoin="round"
+                                             class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200">
+                                            <path d="m6 9 6 6 6-6"></path>
+                                        </svg>
+                                    </button>
+                                </h3>
+                                <div data-state="closed" id="radix-:rj:" hidden="" role="region"
+                                     aria-labelledby="radix-:ri:" data-orientation="vertical"
+                                     data-slot="accordion-content"
+                                     class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                                     style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-slot="card"
+                     class="flex flex-col gap-6 rounded-xl mt-12 p-8 bg-gradient-to-br from-green-700 to-green-800 text-white border-0">
+                    <h3 class="mb-4">Visiting Tips</h3>
+                    <ul class="space-y-2 text-green-100">
+                        <li>• Altars are typically open to the public around March 19th</li>
+                        <li>• No admission fee, but donations are welcomed</li>
+                        <li>• Dress respectfully as these are sacred spaces</li>
+                        <li>• Photography is usually allowed, but ask first</li>
+                        <li>• Accept blessed bread and fava beans as tokens of blessing</li>
+                        <li>• Many altars offer traditional Sicilian foods to sample</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <footer class="bg-gradient-to-br from-green-900 to-green-950 text-white py-16 px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-4 gap-12 mb-12">
+                    <div class="md:col-span-1">
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="lucide lucide-heart w-6 h-6 text-white fill-white">
+                                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                                </svg>
+                            </div>
+                            <span class="text-xl">St. Joseph Altars</span></div>
+                        <p class="text-green-200 leading-relaxed">Preserving and celebrating Sicilian heritage in New
+                            Orleans through faith, food, and community.</p></div>
+                    <div><h4 class="mb-4">About</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-green-200 hover:text-orange-300 transition-colors">History</a>
+                            </li>
+                            <li><a href="#" class="text-green-200 hover:text-orange-300 transition-colors">Tradition</a>
+                            </li>
+                            <li><a href="#" class="text-green-200 hover:text-orange-300 transition-colors">Community</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div><h4 class="mb-4">Visit</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-green-200 hover:text-orange-300 transition-colors">Find an
+                                Altar</a></li>
+                            <li><a href="#" class="text-green-200 hover:text-orange-300 transition-colors">Event
+                                Calendar</a></li>
+                            <li><a href="#" class="text-green-200 hover:text-orange-300 transition-colors">Volunteer</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div><h4 class="mb-4">Resources</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-green-200 hover:text-orange-300 transition-colors">How to Create
+                                an Altar</a></li>
+                            <li><a href="#" class="text-green-200 hover:text-orange-300 transition-colors">Traditional
+                                Recipes</a></li>
+                            <li><a href="#" class="text-green-200 hover:text-orange-300 transition-colors">Prayer
+                                Guide</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t border-green-800 pt-8">
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-4"><p
+                            class="text-green-300 text-sm">© 2025 St. Joseph Altars of New Orleans. Celebrating
+                        tradition with love.</p>
+                        <div class="flex gap-6 text-sm"><a href="#"
+                                                           class="text-green-300 hover:text-orange-300 transition-colors">Privacy
+                            Policy</a><a href="#" class="text-green-300 hover:text-orange-300 transition-colors">Contact
+                            Us</a></div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+
+</body>
+</html>
