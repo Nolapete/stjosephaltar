@@ -43,3 +43,9 @@ def search_altars(request):
     query = request.GET.get('q')
     altars = Altar.objects.filter(name__icontains=query)
     return render(request, 'altars/search_altars.html', {'altars': altars, 'query': query})
+
+def find_altars_view(request):
+    """
+    Renders the find altars page template.
+    """
+    return render(request, 'altars/find_altars.html')
