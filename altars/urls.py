@@ -10,4 +10,5 @@ urlpatterns = [
     path('delete/<int:altar_id>/', views.delete_altar, name="delete_altar"),
     path('search/', views.search_altars, name='search_altars'),
     path('find/', views.find_altars_view, name='find_altars'),
+    path('details/<int:altar_id>/', views.altar_details, name='altar_details'),
 ]

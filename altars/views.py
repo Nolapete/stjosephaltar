@@ -46,6 +46,14 @@ def search_altars(request):
 
 def find_altars_view(request):
     """
-    Renders the find altars page template.
+    Renders the find altars page template with altar data.
     """
-    return render(request, 'altars/find_altars.html')
+    altars = Altar.objects.prefetch_related('contact_set', 'event_set').all()
+    return render(request, 'altars/find_altars.html', {'altars': altars})
+
+def altar_details(request, altar_id):
+    """
+    Returns altar details content for HTMX accordion.
+    """
+    altar = Altar.objects.prefetch_related('contact_set', 'event_set').get(pk=altar_id)
+    return render(request, 'altars/altar_details.html', {'altar': altar})
