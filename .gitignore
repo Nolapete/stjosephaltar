@@ -53,3 +53,4 @@ dist/
 # Linode config files
 *_wsgi.py
 uwsgi.*
+.aider*
