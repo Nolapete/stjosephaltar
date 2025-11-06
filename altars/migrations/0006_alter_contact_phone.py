@@ -5,16 +5,17 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('altars', '0005_alter_contact_phone'),
+        ("altars", "0005_alter_contact_phone"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='contact',
-            name='phone',
-            field=phonenumber_field.modelfields.PhoneNumberField(blank=True, default='', max_length=128, region=None),
+            model_name="contact",
+            name="phone",
+            field=phonenumber_field.modelfields.PhoneNumberField(
+                blank=True, default="", max_length=128, region=None
+            ),
             preserve_default=False,
         ),
     ]

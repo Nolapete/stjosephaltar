@@ -4,28 +4,48 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Altar',
+            name="Altar",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200)),
-                ('location', models.CharField(blank=True, max_length=200, null=True)),
-                ('address1', models.CharField(blank=True, max_length=100, null=True)),
-                ('address2', models.CharField(blank=True, max_length=100, null=True)),
-                ('address3', models.CharField(blank=True, max_length=100, null=True)),
-                ('city', models.CharField(max_length=100)),
-                ('state', models.CharField(max_length=20)),
-                ('zipcode', models.CharField(max_length=10)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200)),
+                ("location", models.CharField(blank=True, max_length=200, null=True)),
+                ("address1", models.CharField(blank=True, max_length=100, null=True)),
+                ("address2", models.CharField(blank=True, max_length=100, null=True)),
+                ("address3", models.CharField(blank=True, max_length=100, null=True)),
+                ("city", models.CharField(max_length=100)),
+                ("state", models.CharField(max_length=20)),
+                ("zipcode", models.CharField(max_length=10)),
             ],
             options={
-                'indexes': [models.Index(fields=['name', 'location', 'address1', 'address2', 'address3', 'city', 'state', 'zipcode'], name='altars_alta_name_f614ab_idx')],
+                "indexes": [
+                    models.Index(
+                        fields=[
+                            "name",
+                            "location",
+                            "address1",
+                            "address2",
+                            "address3",
+                            "city",
+                            "state",
+                            "zipcode",
+                        ],
+                        name="altars_alta_name_f614ab_idx",
+                    )
+                ],
             },
         ),
     ]

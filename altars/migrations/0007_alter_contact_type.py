@@ -4,15 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('altars', '0006_alter_contact_phone'),
+        ("altars", "0006_alter_contact_phone"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='contact',
-            name='type',
-            field=models.CharField(blank=True, choices=[('D', 'Donations'), ('G', 'General')], max_length=50, null=True),
+            model_name="contact",
+            name="type",
+            field=models.CharField(
+                blank=True,
+                choices=[("D", "Donations"), ("G", "General")],
+                max_length=50,
+                null=True,
+            ),
         ),
     ]

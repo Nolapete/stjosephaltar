@@ -5,54 +5,79 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('altars', '0001_initial'),
+        ("altars", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='altar',
-            name='established_date',
+            model_name="altar",
+            name="established_date",
             field=models.DateField(blank=True, null=True),
         ),
         migrations.AlterField(
-            model_name='altar',
-            name='city',
+            model_name="altar",
+            name="city",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AlterField(
-            model_name='altar',
-            name='state',
+            model_name="altar",
+            name="state",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AlterField(
-            model_name='altar',
-            name='zipcode',
+            model_name="altar",
+            name="zipcode",
             field=models.CharField(blank=True, max_length=20, null=True),
         ),
         migrations.CreateModel(
-            name='Contact',
+            name="Contact",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('type', models.CharField(blank=True, max_length=50, null=True)),
-                ('name', models.CharField(blank=True, max_length=100, null=True)),
-                ('phone', models.CharField(blank=True, max_length=20, null=True)),
-                ('email', models.EmailField(blank=True, max_length=254, null=True)),
-                ('website', models.URLField(blank=True, null=True)),
-                ('altar', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='altars.altar')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("type", models.CharField(blank=True, max_length=50, null=True)),
+                ("name", models.CharField(blank=True, max_length=100, null=True)),
+                ("phone", models.CharField(blank=True, max_length=20, null=True)),
+                ("email", models.EmailField(blank=True, max_length=254, null=True)),
+                ("website", models.URLField(blank=True, null=True)),
+                (
+                    "altar",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="altars.altar"
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Event',
+            name="Event",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('event_name', models.CharField(blank=True, max_length=100, null=True)),
-                ('event_date', models.DateField(blank=True, null=True)),
-                ('type', models.CharField(blank=True, max_length=50, null=True)),
-                ('start_time', models.TimeField(blank=True, null=True)),
-                ('end_time', models.TimeField(blank=True, null=True)),
-                ('altar', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='altars.altar')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("event_name", models.CharField(blank=True, max_length=100, null=True)),
+                ("event_date", models.DateField(blank=True, null=True)),
+                ("type", models.CharField(blank=True, max_length=50, null=True)),
+                ("start_time", models.TimeField(blank=True, null=True)),
+                ("end_time", models.TimeField(blank=True, null=True)),
+                (
+                    "altar",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="altars.altar"
+                    ),
+                ),
             ],
         ),
     ]

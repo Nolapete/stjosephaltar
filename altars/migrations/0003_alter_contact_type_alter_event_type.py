@@ -4,20 +4,35 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('altars', '0002_altar_established_date_alter_altar_city_and_more'),
+        ("altars", "0002_altar_established_date_alter_altar_city_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='contact',
-            name='type',
-            field=models.CharField(blank=True, choices=[('D', 'Donation'), ('G', 'General')], max_length=50, null=True),
+            model_name="contact",
+            name="type",
+            field=models.CharField(
+                blank=True,
+                choices=[("D", "Donation"), ("G", "General")],
+                max_length=50,
+                null=True,
+            ),
         ),
         migrations.AlterField(
-            model_name='event',
-            name='type',
-            field=models.CharField(blank=True, choices=[('V', 'Viewing'), ('M', 'Mass'), ('F', 'Meal'), ('B', 'Blessing'), ('T', 'Tupa Tupa')], max_length=50, null=True),
+            model_name="event",
+            name="type",
+            field=models.CharField(
+                blank=True,
+                choices=[
+                    ("V", "Viewing"),
+                    ("M", "Mass"),
+                    ("F", "Meal"),
+                    ("B", "Blessing"),
+                    ("T", "Tupa Tupa"),
+                ],
+                max_length=50,
+                null=True,
+            ),
         ),
     ]

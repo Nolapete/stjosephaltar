@@ -1,0 +1,112 @@
+[project]
+name = "stjosephaltar"
+description = "St. Joseph Altar Org website"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "aider-install==0.2.0",
+    "amqp==5.3.1",
+    "asgiref==3.10.0",
+    "attrs==25.4.0",
+    "automat==25.4.16",
+    "beautifulsoup4==4.14.2",
+    "billiard==4.2.2",
+    "black==25.9.0",
+    "celery==5.5.3",
+    "celery-types==0.23.0",
+    "certifi==2025.10.5",
+    "cffi==2.0.0",
+    "charset-normalizer==3.4.4",
+    "click==8.3.0",
+    "click-didyoumean==0.3.1",
+    "click-plugins==1.1.1.2",
+    "click-repl==0.3.0",
+    "constantly==23.10.4",
+    "cryptography==46.0.3",
+    "cssselect==1.3.0",
+    "defusedxml==0.7.1",
+    "django==5.2.7",
+    "django-celery-results==2.6.0",
+    "django-environ==0.12.0",
+    "django-filter==25.1",
+    "django-htmx==1.26.0",
+    "django-leaflet==0.32.0",
+    "django-phonenumber-field==8.1.0",
+    "djangorestframework==3.16.1",
+    "filelock==3.20.0",
+    "hyperlink==21.0.0",
+    "idna==3.11",
+    "incremental==24.7.2",
+    "itemadapter==0.12.2",
+    "itemloaders==1.3.2",
+    "jmespath==1.0.1",
+    "kombu==5.5.4",
+    "lxml==6.0.2",
+    "markdown==3.9",
+    "mypy-extensions==1.1.0",
+    "packaging==25.0",
+    "parsel==1.10.0",
+    "pathspec==0.12.1",
+    "phonenumbers==9.0.14",
+    "pillow==11.3.0",
+    "platformdirs==4.5.0",
+    "prompt-toolkit==3.0.52",
+    "protego==0.5.0",
+    "psycopg2-binary==2.9.11",
+    "pyasn1==0.6.1",
+    "pyasn1-modules==0.4.2",
+    "pycparser==2.23",
+    "pydispatcher==2.0.7",
+    "pyopenssl==25.3.0",
+    "python-dateutil==2.9.0.post0",
+    "python-decouple==3.8",
+    "pytokens==0.2.0",
+    "pyyaml==6.0.3",
+    "queuelib==1.8.0",
+    "redis==6.4.0",
+    "requests==2.32.5",
+    "requests-file==3.0.0",
+    "scrapy==2.13.3",
+    "service-identity==24.2.0",
+    "setuptools==80.9.0",
+    "six==1.17.0",
+    "soupsieve==2.8",
+    "sqlparse==0.5.3",
+    "tldextract==5.3.0",
+    "twisted==25.5.0",
+    "typing-extensions==4.15.0",
+    "tzdata==2025.2",
+    "urllib3==2.5.0",
+    "uv==0.9.7",
+    "vine==5.1.0",
+    "w3lib==2.3.1",
+    "wcwidth==0.2.14",
+    "zope-interface==8.0.1",
+]
+
+[tool.ruff]
+exclude = ["**/migrations/*.py"]
+line-length = 88
+target-version = "py312" # Set your target Python version
+
+[tool.ruff.lint]
+# Enable Flake8's F, E, W rules by default, plus some extras
+select = ["E", "W", "F", "I", "UP", "B", "C4", "DJ", "S"]
+# E: pycodestyle errors
+# W: pycodestyle warnings
+# F: Pyflakes
+# I: isort (import sorting)
+# UP: pyupgrade (modernizing syntax)
+# B: flake8-bugbear (common issues)
+# C4: flake8-comprehensions
+# DJ: Django-specific rules
+# S: bandit (security issues)
+
+# Ignore some specific rules if needed, e.g., missing docstrings
+ignore = ["D100", "D101", "D102", "D103", "D104"]
+
+[tool.ruff.format]
+# Enable Ruff's highly performant formatter as a drop-in Black replacement
+# It is recommended to use ruff format instead of black now
+quote-style = "double"
+indent-style = "space"

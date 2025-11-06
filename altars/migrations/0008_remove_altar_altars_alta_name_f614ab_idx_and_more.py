@@ -4,42 +4,54 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('altars', '0007_alter_contact_type'),
+        ("altars", "0007_alter_contact_type"),
     ]
 
     operations = [
         migrations.RemoveIndex(
-            model_name='altar',
-            name='altars_alta_name_f614ab_idx',
+            model_name="altar",
+            name="altars_alta_name_f614ab_idx",
         ),
         migrations.RenameField(
-            model_name='event',
-            old_name='event_date',
-            new_name='date',
+            model_name="event",
+            old_name="event_date",
+            new_name="date",
         ),
         migrations.RenameField(
-            model_name='event',
-            old_name='end_time',
-            new_name='end',
+            model_name="event",
+            old_name="end_time",
+            new_name="end",
         ),
         migrations.RenameField(
-            model_name='event',
-            old_name='start_time',
-            new_name='start',
+            model_name="event",
+            old_name="start_time",
+            new_name="start",
         ),
         migrations.RemoveField(
-            model_name='event',
-            name='event_name',
+            model_name="event",
+            name="event_name",
         ),
         migrations.AddField(
-            model_name='event',
-            name='notes',
+            model_name="event",
+            name="notes",
             field=models.TextField(blank=True, null=True),
         ),
         migrations.AddIndex(
-            model_name='altar',
-            index=models.Index(fields=['name', 'location', 'address1', 'address2', 'address3', 'city', 'state', 'zipcode', 'established_date'], name='altars_alta_name_cf4ad9_idx'),
+            model_name="altar",
+            index=models.Index(
+                fields=[
+                    "name",
+                    "location",
+                    "address1",
+                    "address2",
+                    "address3",
+                    "city",
+                    "state",
+                    "zipcode",
+                    "established_date",
+                ],
+                name="altars_alta_name_cf4ad9_idx",
+            ),
         ),
     ]
