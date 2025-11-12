@@ -140,9 +140,18 @@ LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
 SITE_ID = 1
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
-ACCOUNT_LOGIN_METHODS = {"email", "username"}
+
+# Email/Authentication Settings
+ACCOUNT_EMAIL_VERIFICATION = "optional"
+
+# Signup Configuration (New Format)
 ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
+
+# Session/Email Settings
+ACCOUNT_SESSION_REMEMBER = True
+
+# Adapter Configuration (Recommended)
+ACCOUNT_ADAPTER = "allauth.account.adapter.DefaultAccountAdapter"
 
 
 if not DEBUG:
@@ -178,6 +187,7 @@ REST_FRAMEWORK = {
 }
 
 LOGIN_REQUIRED_EXEMPT_URLS = [
+    r"^/$",
     r"^/accounts/",
     r"^/admin/",
     r"^/static/",
