@@ -1,11 +1,10 @@
-{% extends 'altars/base.html' %}
-{% block content %}
+{% extends 'altars/base.html' %} {% block content %}
 <h2>Search Results for "{{ query }}"</h2>
 <ul>
-    {% for altar in altars %}
-    <li>{{ altar.name }}</li>
-    {% empty %}
-    <li>No altars found.</li>
-    {% endfor %}
+  {% for altar in altars %}
+  <li>{{ altar.name }}</li>
+  {% empty %}
+  <li>No altars found.</li>
+  {% endfor %}
 </ul>
 {% endblock %}

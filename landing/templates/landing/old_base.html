@@ -1,172 +1,339 @@
-{% load static %}
-{% load i18n %}
-{% load django_htmx %}
+{% load static %} {% load i18n %} {% load django_htmx %}
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" hx-boost="true">
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}St. Joseph Altars of New Orleans{% endblock %}</title>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}St. Joseph Altars of New Orleans{% endblock %}
+    </title>
     {% htmx_script %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
     <style>
-        .htmx-indicator {
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-        .htmx-request .htmx-indicator {
-            opacity: 1;
-        }
-        .htmx-request.htmx-indicator {
-            opacity: 1;
-        }
+      .htmx-indicator {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
+      .htmx-request .htmx-indicator {
+        opacity: 1;
+      }
+      .htmx-request.htmx-indicator {
+        opacity: 1;
+      }
     </style>
     {% block extra_css %}{% endblock %}
-</head>
+  </head>
 
-<body>
-<div id="root">
-    <!-- Global Loading Indicator -->
-    <div id="global-loader" class="htmx-indicator fixed top-20 right-4 bg-green-700 text-white px-4 py-2 rounded-lg shadow-lg z-50">
+  <body>
+    <div id="root">
+      <!-- Global Loading Indicator -->
+      <div
+        id="global-loader"
+        class="htmx-indicator fixed top-20 right-4 bg-green-700 text-white px-4 py-2 rounded-lg shadow-lg z-50"
+      >
         <div class="flex items-center gap-2">
-            <svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-            <span>Loading...</span>
+          <svg
+            class="animate-spin h-4 w-4"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
+            ></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            ></path>
+          </svg>
+          <span>Loading...</span>
         </div>
-    </div>
-    
-    <div class="min-h-screen bg-amber-50">
+      </div>
+
+      <div class="min-h-screen bg-amber-50">
         <!-- Navigation -->
         {% block navigation %}
-        <nav class="bg-gradient-to-r from-green-800 to-green-900 text-white sticky top-0 z-50 shadow-lg">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="flex items-center justify-between h-16">
-                    <button class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                        <div class="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                 stroke-linejoin="round" class="lucide lucide-heart w-5 h-5 text-white fill-white">
-                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
-                            </svg>
-                        </div>
-                        <span class="hidden sm:inline">St. Joseph Altars NOLA</span></button>
-                    <div class="hidden md:flex items-center gap-6">
-                        <button hx-get="{% url 'landing:landing_page' %}" 
-                                hx-target="#main-content" 
-                                hx-push-url="true"
-                                hx-indicator="#global-loader"
-                                class="px-4 py-2 rounded-lg transition-all bg-orange-600 text-white">Home</button>
-                        <button hx-get="{% url 'altars:list_altars' %}" 
-                                hx-target="#main-content" 
-                                hx-push-url="true"
-                                hx-indicator="#global-loader"
-                                class="px-4 py-2 rounded-lg transition-all text-green-100 hover:bg-green-700">Find
-                            Altars
-                        </button>
-                        <button hx-get="{% url 'contact' %}" 
-                                hx-target="#main-content" 
-                                hx-push-url="true"
-                                hx-indicator="#global-loader"
-                                data-slot="button"
-                                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5 bg-orange-600 hover:bg-orange-700 text-white">
-                            Contact Us
-                        </button>
-                    </div>
-                    <button class="md:hidden p-2 hover:bg-green-700 rounded-lg transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="lucide lucide-menu w-6 h-6">
-                            <line x1="4" x2="20" y1="12" y2="12"></line>
-                            <line x1="4" x2="20" y1="6" y2="6"></line>
-                            <line x1="4" x2="20" y1="18" y2="18"></line>
-                        </svg>
-                    </button>
+        <nav
+          class="bg-gradient-to-r from-green-800 to-green-900 text-white sticky top-0 z-50 shadow-lg"
+        >
+          <div class="max-w-6xl mx-auto px-6">
+            <div class="flex items-center justify-between h-16">
+              <button
+                class="flex items-center gap-2 hover:opacity-80 transition-opacity"
+              >
+                <div
+                  class="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-heart w-5 h-5 text-white fill-white"
+                  >
+                    <path
+                      d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+                    ></path>
+                  </svg>
                 </div>
+                <span class="hidden sm:inline">St. Joseph Altars NOLA</span>
+              </button>
+              <div class="hidden md:flex items-center gap-6">
+                <button
+                  hx-get="{% url 'landing:landing_page' %}"
+                  hx-target="#main-content"
+                  hx-push-url="true"
+                  hx-indicator="#global-loader"
+                  class="px-4 py-2 rounded-lg transition-all bg-orange-600 text-white"
+                >
+                  Home
+                </button>
+                <button
+                  hx-get="{% url 'altars:list_altars' %}"
+                  hx-target="#main-content"
+                  hx-push-url="true"
+                  hx-indicator="#global-loader"
+                  class="px-4 py-2 rounded-lg transition-all text-green-100 hover:bg-green-700"
+                >
+                  Find Altars
+                </button>
+                <button
+                  hx-get="{% url 'contact' %}"
+                  hx-target="#main-content"
+                  hx-push-url="true"
+                  hx-indicator="#global-loader"
+                  data-slot="button"
+                  class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5 bg-orange-600 hover:bg-orange-700 text-white"
+                >
+                  Contact Us
+                </button>
+              </div>
+              <button
+                class="md:hidden p-2 hover:bg-green-700 rounded-lg transition-colors"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-menu w-6 h-6"
+                >
+                  <line x1="4" x2="20" y1="12" y2="12"></line>
+                  <line x1="4" x2="20" y1="6" y2="6"></line>
+                  <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+              </button>
             </div>
+          </div>
         </nav>
         {% endblock %}
 
         <!-- Main Content -->
         {% block main_content %}
-        <div id="main-content" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-            <!-- Default content will go here -->
+        <div
+          id="main-content"
+          class="relative min-h-screen flex items-center justify-center overflow-hidden"
+        >
+          <!-- Default content will go here -->
         </div>
         {% endblock %}
 
         <!-- Footer -->
         {% block footer %}
-        <footer class="bg-gradient-to-br from-green-900 to-green-950 text-white py-16 px-6">
-            <div class="max-w-6xl mx-auto">
-                <div class="grid md:grid-cols-4 gap-12 mb-12">
-                    <div class="md:col-span-1">
-                        <div class="flex items-center gap-2 mb-4">
-                            <div class="w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round" class="lucide lucide-heart w-6 h-6 text-white fill-white">
-                                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
-                                </svg>
-                            </div>
-                            <span class="text-xl font-bold">St. Joseph Altars NOLA</span>
-                        </div>
-                        <p class="text-green-100">Preserving and celebrating the sacred Sicilian tradition of St. Joseph altars in New Orleans.</p>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-                        <ul class="space-y-2 text-green-100">
-                            <li><a href="#" class="hover:text-white transition-colors">About the Tradition</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Find Altars</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Event Schedule</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Get Involved</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold mb-4">Resources</h3>
-                        <ul class="space-y-2 text-green-100">
-                            <li><a href="#" class="hover:text-white transition-colors">History &amp; Traditions</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Photo Gallery</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Planning Guide</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold mb-4">Stay Connected</h3>
-                        <p class="text-green-100 mb-4">Join our community and stay updated on altar locations and events.</p>
-                        <div class="flex gap-3">
-                            <button class="w-10 h-10 bg-green-800 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook">
-                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                                </svg>
-                            </button>
-                            <button class="w-10 h-10 bg-green-800 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram">
-                                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                                </svg>
-                            </button>
-                            <button class="w-10 h-10 bg-green-800 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail">
-                                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                                    <path d="m22 7-10 5L2 7"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
+        <footer
+          class="bg-gradient-to-br from-green-900 to-green-950 text-white py-16 px-6"
+        >
+          <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+              <div class="md:col-span-1">
+                <div class="flex items-center gap-2 mb-4">
+                  <div
+                    class="w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-heart w-6 h-6 text-white fill-white"
+                    >
+                      <path
+                        d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <span class="text-xl font-bold">St. Joseph Altars NOLA</span>
                 </div>
-                <div class="border-t border-green-800 pt-8 text-center text-green-100">
-                    <p>&copy; 2024 St. Joseph Altars NOLA. All rights reserved. | A sacred New Orleans tradition</p>
+                <p class="text-green-100">
+                  Preserving and celebrating the sacred Sicilian tradition of
+                  St. Joseph altars in New Orleans.
+                </p>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                <ul class="space-y-2 text-green-100">
+                  <li>
+                    <a href="#" class="hover:text-white transition-colors"
+                      >About the Tradition</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="hover:text-white transition-colors"
+                      >Find Altars</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="hover:text-white transition-colors"
+                      >Event Schedule</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="hover:text-white transition-colors"
+                      >Get Involved</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                <ul class="space-y-2 text-green-100">
+                  <li>
+                    <a href="#" class="hover:text-white transition-colors"
+                      >History &amp; Traditions</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="hover:text-white transition-colors"
+                      >Photo Gallery</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="hover:text-white transition-colors"
+                      >Planning Guide</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="hover:text-white transition-colors"
+                      >FAQ</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Stay Connected</h3>
+                <p class="text-green-100 mb-4">
+                  Join our community and stay updated on altar locations and
+                  events.
+                </p>
+                <div class="flex gap-3">
+                  <button
+                    class="w-10 h-10 bg-green-800 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-facebook"
+                    >
+                      <path
+                        d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                      ></path>
+                    </svg>
+                  </button>
+                  <button
+                    class="w-10 h-10 bg-green-800 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-instagram"
+                    >
+                      <rect
+                        width="20"
+                        height="20"
+                        x="2"
+                        y="2"
+                        rx="5"
+                        ry="5"
+                      ></rect>
+                      <path
+                        d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                      ></path>
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                  </button>
+                  <button
+                    class="w-10 h-10 bg-green-800 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-mail"
+                    >
+                      <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                      <path d="m22 7-10 5L2 7"></path>
+                    </svg>
+                  </button>
                 </div>
+              </div>
             </div>
+            <div
+              class="border-t border-green-800 pt-8 text-center text-green-100"
+            >
+              <p>
+                &copy; 2024 St. Joseph Altars NOLA. All rights reserved. | A
+                sacred New Orleans tradition
+              </p>
+            </div>
+          </div>
         </footer>
         {% endblock %}
+      </div>
     </div>
-</div>
 
-{% block extra_js %}{% endblock %}
-</body>
+    {% block extra_js %}{% endblock %}
+  </body>
 </html>
