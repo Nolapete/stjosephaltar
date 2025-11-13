@@ -1,22 +1,25 @@
 {% load leaflet_tags %}
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>{% block title %}Route Planner{% endblock %}</title>
-    {% leaflet_js %} {% leaflet_css %}
-    <style>
+    <head>
+        <meta charset="UTF-8" />
+        <title>
+            {% block title %}Route Planner{% endblock %}
+        </title>
+        {% leaflet_js %} {% leaflet_css %}
+        <style>
       .leaflet-container {
         height: 500px;
       }
-    </style>
-  </head>
-  <body>
-    <nav>
-      <a href="{% url 'planner:route_list' %}">Home</a>
-    </nav>
-    <main>{% block content %}{% endblock %}</main>
-    {% block extra_js %}{% endblock %}
-  </body>
+        </style>
+    </head>
+    <body>
+        <nav>
+            <a href="{% url 'planner:route_list' %}">Home</a>
+        </nav>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+        {% block extra_js %}{% endblock %}
+    </body>
 </html>

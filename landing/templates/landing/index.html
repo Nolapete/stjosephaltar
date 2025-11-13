@@ -1,20 +1,18 @@
 {% extends "landing/base.html" %}
 {% load static %}
-
 {% block title %}Welcome to stjosephaltar.org!{% endblock %}
-
 {% block content %}
     <header class="italian-header">
         <h1>Welcome to stjosephaltar.org!</h1>
         <h2>New Orleans Region St. Joseph Altars</h2>
     </header>
-
     <main>
         <section class="intro">
             <h2>About St. Joseph Altars</h2>
-            <p>St. Joseph Altars are a cherished tradition in New Orleans, celebrating the feast of St. Joseph with elaborate altars, food, and community gatherings.</p>
+            <p>
+                St. Joseph Altars are a cherished tradition in New Orleans, celebrating the feast of St. Joseph with elaborate altars, food, and community gatherings.
+            </p>
         </section>
-
         <section class="gallery">
             <h2>Gallery</h2>
             <div class="gallery-grid">
@@ -23,17 +21,17 @@
                 <img src="{% static 'images/altar3.jpg' %}" alt="St. Joseph Altar 3">
             </div>
         </section>
-
         <section class="events">
             <h2>Upcoming Events</h2>
             <ul>
                 <li>March 19, 2026 - St. Joseph's Day Celebration</li>
             </ul>
         </section>
-
         <section class="contact">
             <h2>Contact Us</h2>
-            Email: <a href="mailto:pete.logiudice@stjosephaltar.org">pete.logiudice@stjosephaltar.org</a><br>
-            Phone: (504) 356-8556<br>
+            Email: <a href="mailto:pete.logiudice@stjosephaltar.org">pete.logiudice@stjosephaltar.org</a>
+            <br>
+            Phone: (504) 356-8556
+            <br>
         </main>
-{% endblock %}
+    {% endblock %}

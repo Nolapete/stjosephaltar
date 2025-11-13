@@ -1,24 +1,22 @@
-{% load static %} {% load i18n %}
-<!doctype html>
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>
-      {% block title %}St. Joseph Altars (stjosephaltar.org) {% endblock %}
-    </title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <!-- Other CSS and meta tags -->
-  </head>
-  <body>
-    <h1>{% trans "Welcome" %}</h1>
-    <br />
-    (this should show in whichever language localization is set in browser)
-    <a href="{% url 'altars:list_altars' %}">Altars</a>
-
-    {% block content %}
-    <!-- Content from child templates goes here -->
-    {% endblock %}
-    <!-- Your footer -->
-    <script src="{% static 'js/script.js' %}"></script>
-    <!-- Other scripts -->
-  </body>
+    <head>
+        <title>
+            {% block title %}St. Joseph Altars (stjosephaltar.org){% endblock %}
+        </title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        <!-- Other CSS and meta tags -->
+    </head>
+    <body>
+        <h1>{% trans "Welcome" %}</h1>
+        <br />
+        (this should show in whichever language localization is set in browser)
+        <a href="{% url 'altars:list_altars' %}">Altars</a>
+        {% block content %}<!-- Content from child templates goes here -->{% endblock %}
+        <!-- Your footer -->
+        <script src="{% static 'js/script.js' %}"></script>
+        <!-- Other scripts -->
+    </body>
 </html>

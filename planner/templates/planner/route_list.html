@@ -1,13 +1,14 @@
-{% extends 'planner/base.html' %} {% block content %}
-<h1>Route List</h1>
-<a href="{% url 'planner:route_create' %}">Create New Route</a>
-<ul>
-  {% for route in routes %}
-  <li>
-    <a href="{% url 'planner:route_detail' pk=route.pk %}">{{ route.name }}</a>
-  </li>
-  {% empty %}
-  <li>No routes have been created yet.</li>
-  {% endfor %}
-</ul>
+{% extends 'planner/base.html' %}
+{% block content %}
+    <h1>Route List</h1>
+    <a href="{% url 'planner:route_create' %}">Create New Route</a>
+    <ul>
+        {% for route in routes %}
+            <li>
+                <a href="{% url 'planner:route_detail' pk=route.pk %}">{{ route.name }}</a>
+            </li>
+        {% empty %}
+            <li>No routes have been created yet.</li>
+        {% endfor %}
+    </ul>
 {% endblock %}
