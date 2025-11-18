@@ -48,28 +48,17 @@
                                     {{ altar.address1 }}
                                     <br />
                                 {% endif %}
-                                {% if
-                                    altar.address2 %}
+                                {% if altar.address2 %}
                                     {{ altar.address2 }}
                                     <br />
                                 {% endif %}
-                                {% if
-                                    altar.address3 %}
+                                {% if altar.address3 %}
                                     {{ altar.address3 }}
                                     <br />
                                 {% endif %}
-                                {% if
-                                    altar.city %}
-                                    {{ altar.city }},
-                                {% endif %}
-                                {% if altar.state %}
-                                    {{
-                                    altar.state }}
-                                {% endif %}
-                                {% if altar.zipcode %}
-                                    {{ altar.zipcode
-                                    }}
-                                {% endif %}
+                                {% if altar.city %}{{ altar.city }},{% endif %}
+                                {% if altar.state %}{{ altar.state }}{% endif %}
+                                {% if altar.zipcode %}{{ altar.zipcode }}{% endif %}
                             </p>
                             <hr />
                             <!-- Nested Accordion for Contacts and Events -->
