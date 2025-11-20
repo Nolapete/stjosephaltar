@@ -98,3 +98,5 @@ uwsgi.ini
 *.sublime-project
 *.sublime-workspace
 .direnv/
+.idea/
+*.iml
