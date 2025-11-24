@@ -6,6 +6,8 @@ amqp==5.3.1
     # via
     #   stjosephaltar (pyproject.toml)
     #   kombu
+annotated-types==0.7.0
+    # via pydantic
 asgiref==3.10.0
     # via
     #   stjosephaltar (pyproject.toml)
@@ -21,6 +23,8 @@ automat==25.4.16
     # via
     #   stjosephaltar (pyproject.toml)
     #   twisted
+babel==2.17.0
+    # via django-oscar
 beautifulsoup4==4.14.2
     # via stjosephaltar (pyproject.toml)
 billiard==4.2.2
@@ -100,25 +104,55 @@ django==5.2.7
     #   stjosephaltar (pyproject.toml)
     #   django-allauth
     #   django-celery-results
+    #   django-debug-toolbar
+    #   django-extra-views
     #   django-filter
+    #   django-haystack
     #   django-htmx
     #   django-leaflet
+    #   django-ninja
+    #   django-oscar
     #   django-phonenumber-field
+    #   django-tables2
+    #   django-treebeard
+    #   django-waffle
     #   djangorestframework
 django-allauth==65.13.0
     # via stjosephaltar (pyproject.toml)
 django-celery-results==2.6.0
     # via stjosephaltar (pyproject.toml)
+django-crm==0.9.0
+    # via stjosephaltar (pyproject.toml)
+django-debug-toolbar==6.1.0
+    # via stjosephaltar (pyproject.toml)
 django-environ==0.12.0
     # via stjosephaltar (pyproject.toml)
+django-extra-views==0.16.0
+    # via django-oscar
 django-filter==25.1
     # via stjosephaltar (pyproject.toml)
+django-haystack==3.3.0
+    # via django-oscar
 django-htmx==1.26.0
     # via stjosephaltar (pyproject.toml)
 django-leaflet==0.32.0
     # via stjosephaltar (pyproject.toml)
-django-phonenumber-field==8.1.0
+django-ninja==1.5.0
     # via stjosephaltar (pyproject.toml)
+django-oscar==4.1
+    # via stjosephaltar (pyproject.toml)
+django-phonenumber-field==8.1.0
+    # via
+    #   stjosephaltar (pyproject.toml)
+    #   django-oscar
+django-tables2==2.7.0
+    # via django-oscar
+django-treebeard==4.7.1
+    # via django-oscar
+django-waffle==5.0.0
+    # via stjosephaltar (pyproject.toml)
+django-widget-tweaks==1.5.0
+    # via django-oscar
 djangorestframework==3.16.1
     # via stjosephaltar (pyproject.toml)
 djlint==1.36.4
@@ -127,6 +161,10 @@ editorconfig==0.17.1
     # via
     #   cssbeautifier
     #   jsbeautifier
+factory-boy==3.3.3
+    # via django-oscar
+faker==38.2.0
+    # via factory-boy
 filelock==3.20.0
     # via
     #   stjosephaltar (pyproject.toml)
@@ -191,6 +229,7 @@ packaging==25.0
     # via
     #   stjosephaltar (pyproject.toml)
     #   black
+    #   django-haystack
     #   kombu
     #   parsel
     #   pytest
@@ -206,9 +245,13 @@ pathspec==0.12.1
     #   black
     #   djlint
 phonenumbers==9.0.14
-    # via stjosephaltar (pyproject.toml)
+    # via
+    #   stjosephaltar (pyproject.toml)
+    #   django-oscar
 pillow==11.3.0
-    # via stjosephaltar (pyproject.toml)
+    # via
+    #   stjosephaltar (pyproject.toml)
+    #   django-oscar
 platformdirs==4.5.0
     # via
     #   stjosephaltar (pyproject.toml)
@@ -228,6 +271,8 @@ protego==0.5.0
     #   scrapy
 psycopg2-binary==2.9.11
     # via stjosephaltar (pyproject.toml)
+purl==1.6
+    # via django-oscar
 pyasn1==0.6.1
     # via
     #   stjosephaltar (pyproject.toml)
@@ -241,6 +286,10 @@ pycparser==2.23
     # via
     #   stjosephaltar (pyproject.toml)
     #   cffi
+pydantic==2.12.4
+    # via django-ninja
+pydantic-core==2.41.5
+    # via pydantic
 pydispatcher==2.0.7
     # via
     #   stjosephaltar (pyproject.toml)
@@ -302,7 +351,10 @@ six==1.17.0
     #   stjosephaltar (pyproject.toml)
     #   cssbeautifier
     #   jsbeautifier
+    #   purl
     #   python-dateutil
+sorl-thumbnail==12.11.0
+    # via stjosephaltar (pyproject.toml)
 soupsieve==2.8
     # via
     #   stjosephaltar (pyproject.toml)
@@ -311,6 +363,7 @@ sqlparse==0.5.3
     # via
     #   stjosephaltar (pyproject.toml)
     #   django
+    #   django-debug-toolbar
 tldextract==5.3.0
     # via
     #   stjosephaltar (pyproject.toml)
@@ -326,11 +379,17 @@ typing-extensions==4.15.0
     #   stjosephaltar (pyproject.toml)
     #   beautifulsoup4
     #   celery-types
+    #   pydantic
+    #   pydantic-core
     #   pyopenssl
     #   twisted
+    #   typing-inspection
+typing-inspection==0.4.2
+    # via pydantic
 tzdata==2025.2
     # via
     #   stjosephaltar (pyproject.toml)
+    #   faker
     #   kombu
 urllib3==2.5.0
     # via
@@ -357,6 +416,8 @@ wcwidth==0.2.14
     # via
     #   stjosephaltar (pyproject.toml)
     #   prompt-toolkit
+whoosh==2.7.4
+    # via stjosephaltar (pyproject.toml)
 zope-interface==8.0.1
     # via
     #   stjosephaltar (pyproject.toml)

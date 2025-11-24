@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 
 import environ
+from oscar.defaults import *
 
 env = environ.Env(DEBUG=(bool, False))
 
@@ -31,16 +32,58 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.flatpages",
     "django.contrib.sites",
-    # Third-party apps
+    # Third party apps
+    "rest_framework",
+    "ninja",
+    "django_htmx",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "waffle",
+    "oscar.config.Shop",
+    "oscar.apps.analytics.apps.AnalyticsConfig",
+    "oscar.apps.checkout.apps.CheckoutConfig",
+    "oscar.apps.address.apps.AddressConfig",
+    "oscar.apps.shipping.apps.ShippingConfig",
+    "oscar.apps.catalogue.apps.CatalogueConfig",
+    "oscar.apps.catalogue.reviews.apps.CatalogueReviewsConfig",
+    "oscar.apps.communication.apps.CommunicationConfig",
+    "oscar.apps.partner.apps.PartnerConfig",
+    "oscar.apps.basket.apps.BasketConfig",
+    "oscar.apps.payment.apps.PaymentConfig",
+    "oscar.apps.offer.apps.OfferConfig",
+    "oscar.apps.order.apps.OrderConfig",
+    "oscar.apps.customer.apps.CustomerConfig",
+    "oscar.apps.search.apps.SearchConfig",
+    "oscar.apps.voucher.apps.VoucherConfig",
+    "oscar.apps.wishlists.apps.WishlistsConfig",
+    "oscar.apps.dashboard.apps.DashboardConfig",
+    "oscar.apps.dashboard.reports.apps.ReportsDashboardConfig",
+    "oscar.apps.dashboard.users.apps.UsersDashboardConfig",
+    "oscar.apps.dashboard.orders.apps.OrdersDashboardConfig",
+    "oscar.apps.dashboard.catalogue.apps.CatalogueDashboardConfig",
+    "oscar.apps.dashboard.offers.apps.OffersDashboardConfig",
+    "oscar.apps.dashboard.partners.apps.PartnersDashboardConfig",
+    "oscar.apps.dashboard.pages.apps.PagesDashboardConfig",
+    "oscar.apps.dashboard.ranges.apps.RangesDashboardConfig",
+    "oscar.apps.dashboard.reviews.apps.ReviewsDashboardConfig",
+    "oscar.apps.dashboard.vouchers.apps.VouchersDashboardConfig",
+    "oscar.apps.dashboard.communications.apps.CommunicationsDashboardConfig",
+    "oscar.apps.dashboard.shipping.apps.ShippingDashboardConfig",
+    "crm",
     "django_celery_results",
+    "widget_tweaks",
+    "haystack",
+    "treebeard",
+    "sorl.thumbnail",
+    "django_tables2",
+    "django_filters",
     "django.contrib.gis",
     "leaflet",
     "phonenumber_field",
-    "rest_framework",
-    "allauth",
-    "allauth.account",
-
+    # Apps
     "landing",
     "altars",
     "planner",
@@ -54,22 +97,24 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "config.middleware.LoginRequiredMiddleware",
     "allauth.account.middleware.AccountMiddleware",
+    "oscar.apps.basket.middleware.BasketMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_htmx.middleware.HtmxMiddleware",
 ]
 
 if DEBUG:
     INSTALLED_APPS += [
-        'debug_toolbar',
+        "debug_toolbar",
     ]
 
     MIDDLEWARE += [
-        'debug_toolbar.middleware.DebugToolbarMiddleware',
+        "debug_toolbar.middleware.DebugToolbarMiddleware",
     ]
 
     # This setting is REQUIRED for the toolbar to appear in the browser
     INTERNAL_IPS = [
-        '127.0.0.1',
+        "127.0.0.1",
     ]
 
 
@@ -78,7 +123,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "templates")],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -91,7 +136,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "config.wsgi.application"
-
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
@@ -155,25 +199,37 @@ LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-SITE_ID = 1
+# Django Oscar Settings (Minimum Requirements)
+OSCAR_SHOP_NAME = "St. Joseph Altar Org"
+OSCAR_FROM_EMAIL = "support@stjosephaltar.org"
+OSCAR_DEFAULT_CURRENCY = "USD"
+SITE_ID = 1  # Required by Allauth and Oscar
+
+# Optional: Set the user model if Oscar doesn't find it automatically
+OSCAR_USER_MODEL = "auth.User"
+
+WHOOSH_INDEX_PATH = os.path.join(BASE_DIR, "whoosh_index")
+
+HAYSTACK_CONNECTIONS = {
+    "default": {
+        "ENGINE": "haystack.backends.whoosh_backend.WhooshEngine",
+        "PATH": WHOOSH_INDEX_PATH,
+    },
+}
 
 # Email/Authentication Settings
 ACCOUNT_EMAIL_VERIFICATION = "optional"
-
-# Signup Configuration (New Format)
 ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
-
-# Session/Email Settings
 ACCOUNT_SESSION_REMEMBER = True
-
-# Adapter Configuration (Recommended)
 ACCOUNT_ADAPTER = "allauth.account.adapter.DefaultAccountAdapter"
-
+ACCOUNT_LOGIN_METHODS = {"username", "email"}
 
 if not DEBUG:
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = "DENY"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
