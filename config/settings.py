@@ -180,18 +180,9 @@ AUTHENTICATION_BACKENDS = [
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
 LANGUAGE_CODE = "en-us"
-
 TIME_ZONE = "America/Chicago"
-
 USE_I18N = True
-
 USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
-
-STATIC_URL = "/static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -208,9 +199,7 @@ SITE_ID = 1  # Required by Allauth and Oscar
 
 # Optional: Set the user model if Oscar doesn't find it automatically
 OSCAR_USER_MODEL = "auth.User"
-
 WHOOSH_INDEX_PATH = os.path.join(BASE_DIR, "whoosh_index")
-
 HAYSTACK_CONNECTIONS = {
     "default": {
         "ENGINE": "haystack.backends.whoosh_backend.WhooshEngine",
@@ -234,10 +223,13 @@ if not DEBUG:
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles_collected")
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 LEAFLET_CONFIG = {
