@@ -1,7 +1,7 @@
 {% load static %}
 {% load i18n %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>
             {% block title %}St. Joseph Altars (stjosephaltar.org){% endblock %}
@@ -14,9 +14,9 @@
         <br />
         (this should show in whichever language localization is set in browser)
         <a href="{% url 'altars:list_altars' %}">Altars</a>
+        <a href="{% url 'catalogue:index' %}">Store</a>
         {% block content %}<!-- Content from child templates goes here -->{% endblock %}
         <!-- Your footer -->
-        <script src="{% static 'js/script.js' %}"></script>
         <!-- Other scripts -->
     </body>
 </html>

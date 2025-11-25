@@ -85,6 +85,7 @@ INSTALLED_APPS = [
     "phonenumber_field",
     # Apps
     "landing",
+    "store.apps.StoreConfig",
     "altars",
     "planner",
 ]
