@@ -1,0 +1,47 @@
+<section className="py-20 px-6 bg-gradient-to-b from-white to-amber-50">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <Badge className="mb-4 bg-green-700 text-white px-4 py-2">New Orleans Heritage</Badge>
+          <h2 className="text-green-800 mb-4">The Sacred Tradition</h2>
+          <p className="text-orange-900 max-w-2xl mx-auto text-lg">
+            In New Orleans, St. Joseph altars blend Sicilian customs with local culture, creating a unique celebration of faith and community.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          <div>
+            <ImageWithFallback
+              src="https://images.unsplash.com/photo-1574431739415-3b8fa8658caa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxJdGFsaWFuJTIwYnJlYWQlMjBmZWFzdHxlbnwxfHx8fDE3NjEyOTExNTF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+              alt="Traditional Italian bread"
+              className="rounded-2xl shadow-2xl w-full h-[400px] object-cover border-4 border-white"
+            />
+          </div>
+          <div className="space-y-6">
+            {traditions.map((item, index) => (
+              <div key={index} className="bg-white rounded-xl p-6 border-l-4 border-orange-500 shadow-md hover:shadow-lg transition-shadow">
+                <h3 className="text-green-800 mb-2">{item.title}</h3>
+                <p className="text-orange-900/80">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="bg-green-700 text-white rounded-2xl p-8 shadow-xl">
+            <h3 className="mb-4">The Legend</h3>
+            <p className="leading-relaxed opacity-95">
+              During a severe drought in Sicily, people prayed to St. Joseph for relief. When the rains came, 
+              they created elaborate altars of thanksgiving laden with food to share with the less fortunate—a 
+              tradition of gratitude that continues today.
+            </p>
+          </div>
+          <div className="bg-orange-600 text-white rounded-2xl p-8 shadow-xl">
+            <h3 className="mb-4">Open to All</h3>
+            <p className="leading-relaxed opacity-95">
+              True to the spirit of St. Joseph's generosity, altars are open to everyone. Visitors are welcomed 
+              to view the altars, receive blessed bread, and share in a meal—no matter their background or beliefs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>

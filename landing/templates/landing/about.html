@@ -1,0 +1,35 @@
+<section id="about" className="py-20 px-6 bg-white">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-green-800 mb-4">What is a St. Joseph Altar?</h2>
+          <p className="text-orange-900 max-w-3xl mx-auto text-lg">
+            St. Joseph altars are a cherished Sicilian tradition that arrived in New Orleans with Italian immigrants. 
+            Created as thanksgiving for prayers answered, these beautiful displays honor St. Joseph on March 19th.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <Card key={index} className="p-8 border-2 border-orange-100 hover:border-orange-300 transition-all hover:shadow-lg">
+                <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-green-700 rounded-full flex items-center justify-center mb-6 mx-auto">
+                  <Icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-center text-green-800 mb-3">{feature.title}</h3>
+                <p className="text-center text-orange-900/80">{feature.description}</p>
+              </Card>
+            );
+          })}
+        </div>
+
+        <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-10 border-2 border-orange-200">
+          <p className="text-orange-950 text-center text-lg leading-relaxed">
+            "The St. Joseph altar is more than a display—it's a living prayer, a feast for the eyes and soul, 
+            and a testament to the enduring spirit of Sicilian heritage in New Orleans. Every item placed on the altar 
+            carries meaning, from the three-tiered structure representing the Holy Trinity to the blessed fava beans 
+            symbolizing good fortune."
+          </p>
+        </div>
+      </div>
+    </section>

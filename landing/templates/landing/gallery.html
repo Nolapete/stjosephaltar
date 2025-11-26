@@ -1,0 +1,28 @@
+<section className="py-20 px-6 bg-white">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-green-800 mb-4">Experience the Beauty</h2>
+          <p className="text-orange-900 max-w-2xl mx-auto text-lg">
+            Each altar is a work of art, crafted with love and devotion by families keeping this sacred tradition alive.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {images.map((image, index) => (
+            <div key={index} className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300">
+              <ImageWithFallback
+                src={image.url}
+                alt={image.title}
+                className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-green-900/90 via-green-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <h3 className="mb-2">{image.title}</h3>
+                  <p className="opacity-90">{image.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
