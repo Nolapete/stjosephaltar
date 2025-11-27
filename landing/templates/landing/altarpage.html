@@ -1,158 +1,155 @@
-<div className="min-h-screen bg-gradient-to-b from-amber-50 to-orange-50">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-green-700 to-green-800 text-white py-16 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <Badge className="mb-4 bg-orange-600 text-white px-4 py-2 border-0">
-            March 19, 2025
-          </Badge>
-          <h1 className="mb-4">New Orleans St. Joseph Altars</h1>
-          <p className="text-green-100 text-lg max-w-2xl mx-auto">
-            Discover altars throughout the New Orleans area. Each altar is a labor of love, 
-            open to all who wish to experience this beautiful Sicilian tradition.
-          </p>
+{% extends "landing/base.html" %}
+{% load static %}
+{% block title %}Altars | stjosephaltar.org{% endblock %}
+{% block head_extra %}{% endblock %}
+{% block main_content %}
+    <div className="min-h-screen bg-gradient-to-b from-amber-50 to-orange-50">
+        {/* Header */}
+        <div className="bg-gradient-to-r from-green-700 to-green-800 text-white py-16 px-6">
+            <div className="max-w-4xl mx-auto text-center">
+                <Badge className="mb-4 bg-orange-600 text-white px-4 py-2 border-0">
+                March 19, 2025
+                </Badge>
+                <h1 className="mb-4">New Orleans St. Joseph Altars</h1>
+                <p className="text-green-100 text-lg max-w-2xl mx-auto">
+                    Discover altars throughout the New Orleans area. Each altar is a labor of love,
+                    open to all who wish to experience this beautiful Sicilian tradition.
+                </p>
+            </div>
         </div>
-      </div>
-
-      {/* Altars List */}
-      <div className="max-w-4xl mx-auto px-6 py-12">
-        <div className="mb-8">
-          <p className="text-orange-900">
-            <span className="font-semibold">{altarsData.length} altars</span> celebrating St. Joseph's Day
-          </p>
-        </div>
-
-        <div className="space-y-6">
-          {altarsData.map((altar) => (
-            <Card key={altar.id} className="border-2 border-orange-200 overflow-hidden">
-              {/* Main Altar Accordion */}
-              <Accordion type="single" collapsible className="w-full">
+        {/* Altars List */}
+        <div className="max-w-4xl mx-auto px-6 py-12">
+            <div className="mb-8">
+                <p className="text-orange-900">
+                    <span className="font-semibold">{altarsData.length} altars</span> celebrating St. Joseph's Day
+                </p>
+            </div>
+            <div className="space-y-6">
+                {altarsData.map((altar) => (
+                <Card key={altar.id} className="border-2 border-orange-200 overflow-hidden">
+                {/* Main Altar Accordion */}
+                <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value={`altar-${altar.id}`} className="border-0">
-                  <AccordionTrigger className="px-6 py-6 hover:bg-amber-50 hover:no-underline">
-                    <div className="flex items-start gap-4 text-left w-full">
-                      <div className="w-12 h-12 bg-gradient-to-br from-green-600 to-green-700 rounded-full flex items-center justify-center flex-shrink-0">
+                <AccordionTrigger className="px-6 py-6 hover:bg-amber-50 hover:no-underline">
+                <div className="flex items-start gap-4 text-left w-full">
+                    <div className="w-12 h-12 bg-gradient-to-br from-green-600 to-green-700 rounded-full flex items-center justify-center flex-shrink-0">
                         <MapPin className="w-6 h-6 text-white" />
-                      </div>
-                      <div className="flex-1 min-w-0">
+                    </div>
+                    <div className="flex-1 min-w-0">
                         <h3 className="text-green-800 mb-2">{altar.name}</h3>
                         <p className="text-orange-900/80">{altar.address}</p>
                         <Badge className="mt-2 bg-orange-100 text-orange-800 border-0">
-                          {altar.neighborhood}
+                        {altar.neighborhood}
                         </Badge>
-                      </div>
                     </div>
-                  </AccordionTrigger>
-                  
-                  <AccordionContent className="px-6 pb-6">
-                    <div className="pl-16 space-y-4">
-                      {/* Nested Accordions */}
-                      <Accordion type="single" collapsible className="w-full">
-                        {/* Contacts Accordion */}
-                        <AccordionItem 
-                          value={`contacts-${altar.id}`} 
-                          className="border border-green-200 rounded-lg mb-3 overflow-hidden"
-                        >
-                          <AccordionTrigger className="px-4 py-3 bg-green-50 hover:bg-green-100 hover:no-underline">
-                            <div className="flex items-center gap-3">
-                              <Users className="w-5 h-5 text-green-700" />
-                              <span className="text-green-800">
-                                Contacts ({altar.contacts.length})
-                              </span>
+                </div>
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-6">
+                <div className="pl-16 space-y-4">
+                    {/* Nested Accordions */}
+                    <Accordion type="single" collapsible className="w-full">
+                    {/* Contacts Accordion */}
+                    <AccordionItem
+                    value={`contacts-${altar.id}`}
+                    className="border border-green-200 rounded-lg mb-3 overflow-hidden"
+                    >
+                    <AccordionTrigger className="px-4 py-3 bg-green-50 hover:bg-green-100 hover:no-underline">
+                    <div className="flex items-center gap-3">
+                        <Users className="w-5 h-5 text-green-700" />
+                        <span className="text-green-800">Contacts ({altar.contacts.length})</span>
+                    </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-4 py-4 bg-white">
+                    <div className="space-y-4">
+                        {altar.contacts.map((contact) => (
+                        <div
+                            key={contact.id}
+                            className="p-4 bg-green-50/50 rounded-lg border border-green-100"
+                            >
+                            <div className="mb-2">
+                                <p className="text-green-900">{contact.name}</p>
+                                <p className="text-sm text-orange-700">{contact.role}</p>
                             </div>
-                          </AccordionTrigger>
-                          <AccordionContent className="px-4 py-4 bg-white">
-                            <div className="space-y-4">
-                              {altar.contacts.map((contact) => (
-                                <div 
-                                  key={contact.id} 
-                                  className="p-4 bg-green-50/50 rounded-lg border border-green-100"
-                                >
-                                  <div className="mb-2">
-                                    <p className="text-green-900">{contact.name}</p>
-                                    <p className="text-sm text-orange-700">{contact.role}</p>
-                                  </div>
-                                  <div className="space-y-1 text-sm">
-                                    <div className="flex items-center gap-2 text-orange-900/80">
-                                      <Phone className="w-4 h-4" />
-                                      <a href={`tel:${contact.phone}`} className="hover:text-orange-700">
+                            <div className="space-y-1 text-sm">
+                                <div className="flex items-center gap-2 text-orange-900/80">
+                                    <Phone className="w-4 h-4" />
+                                    <a href={`tel:${contact.phone}`} className="hover:text-orange-700">
                                         {contact.phone}
-                                      </a>
-                                    </div>
-                                    <div className="flex items-center gap-2 text-orange-900/80">
-                                      <Mail className="w-4 h-4" />
-                                      <a href={`mailto:${contact.email}`} className="hover:text-orange-700">
+                                    </a>
+                                </div>
+                                <div className="flex items-center gap-2 text-orange-900/80">
+                                    <Mail className="w-4 h-4" />
+                                    <a href={`mailto:${contact.email}`} className="hover:text-orange-700">
                                         {contact.email}
-                                      </a>
-                                    </div>
-                                  </div>
+                                    </a>
                                 </div>
-                              ))}
                             </div>
-                          </AccordionContent>
-                        </AccordionItem>
-
-                        {/* Events Accordion */}
-                        <AccordionItem 
-                          value={`events-${altar.id}`} 
-                          className="border border-orange-200 rounded-lg overflow-hidden"
-                        >
-                          <AccordionTrigger className="px-4 py-3 bg-orange-50 hover:bg-orange-100 hover:no-underline">
-                            <div className="flex items-center gap-3">
-                              <Calendar className="w-5 h-5 text-orange-700" />
-                              <span className="text-green-800">
-                                Events ({altar.events.length})
-                              </span>
-                            </div>
-                          </AccordionTrigger>
-                          <AccordionContent className="px-4 py-4 bg-white">
-                            <div className="space-y-4">
-                              {altar.events.map((event) => (
-                                <div 
-                                  key={event.id} 
-                                  className="p-4 bg-orange-50/50 rounded-lg border border-orange-100"
-                                >
-                                  <div className="mb-3">
-                                    <h4 className="text-green-900 mb-1">{event.title}</h4>
-                                    <p className="text-sm text-orange-900/70">{event.description}</p>
-                                  </div>
-                                  <div className="flex flex-wrap gap-4 text-sm">
-                                    <div className="flex items-center gap-2 text-orange-900/80">
-                                      <Calendar className="w-4 h-4" />
-                                      <span>{event.date}</span>
-                                    </div>
-                                    <div className="flex items-center gap-2 text-orange-900/80">
-                                      <Clock className="w-4 h-4" />
-                                      <span>{event.time}</span>
-                                    </div>
-                                    <div className="flex items-center gap-2 text-orange-900/80">
-                                      <Users className="w-4 h-4" />
-                                      <span>~{event.attendees} expected</span>
-                                    </div>
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
+                        </div>
+                        ))}
                     </div>
-                  </AccordionContent>
+                    </AccordionContent>
+                    </AccordionItem>
+                    {/* Events Accordion */}
+                    <AccordionItem
+                    value={`events-${altar.id}`}
+                    className="border border-orange-200 rounded-lg overflow-hidden"
+                    >
+                    <AccordionTrigger className="px-4 py-3 bg-orange-50 hover:bg-orange-100 hover:no-underline">
+                    <div className="flex items-center gap-3">
+                        <Calendar className="w-5 h-5 text-orange-700" />
+                        <span className="text-green-800">Events ({altar.events.length})</span>
+                    </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-4 py-4 bg-white">
+                    <div className="space-y-4">
+                        {altar.events.map((event) => (
+                        <div
+                            key={event.id}
+                            className="p-4 bg-orange-50/50 rounded-lg border border-orange-100"
+                            >
+                            <div className="mb-3">
+                                <h4 className="text-green-900 mb-1">{event.title}</h4>
+                                <p className="text-sm text-orange-900/70">{event.description}</p>
+                            </div>
+                            <div className="flex flex-wrap gap-4 text-sm">
+                                <div className="flex items-center gap-2 text-orange-900/80">
+                                    <Calendar className="w-4 h-4" />
+                                    <span>{event.date}</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-orange-900/80">
+                                    <Clock className="w-4 h-4" />
+                                    <span>{event.time}</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-orange-900/80">
+                                    <Users className="w-4 h-4" />
+                                    <span>~{event.attendees} expected</span>
+                                </div>
+                            </div>
+                        </div>
+                        ))}
+                    </div>
+                    </AccordionContent>
+                    </AccordionItem>
+                    </Accordion>
+                </div>
+                </AccordionContent>
                 </AccordionItem>
-              </Accordion>
+                </Accordion>
+                </Card>
+                ))}
+            </div>
+            {/* Info Box */}
+            <Card className="mt-12 p-8 bg-gradient-to-br from-green-700 to-green-800 text-white border-0">
+            <h3 className="mb-4">Visiting Tips</h3>
+            <ul className="space-y-2 text-green-100">
+                <li>• Altars are typically open to the public around March 19th</li>
+                <li>• No admission fee, but donations are welcomed</li>
+                <li>• Dress respectfully as these are sacred spaces</li>
+                <li>• Photography is usually allowed, but ask first</li>
+                <li>• Accept blessed bread and fava beans as tokens of blessing</li>
+                <li>• Many altars offer traditional Sicilian foods to sample</li>
+            </ul>
             </Card>
-          ))}
         </div>
-
-        {/* Info Box */}
-        <Card className="mt-12 p-8 bg-gradient-to-br from-green-700 to-green-800 text-white border-0">
-          <h3 className="mb-4">Visiting Tips</h3>
-          <ul className="space-y-2 text-green-100">
-            <li>• Altars are typically open to the public around March 19th</li>
-            <li>• No admission fee, but donations are welcomed</li>
-            <li>• Dress respectfully as these are sacred spaces</li>
-            <li>• Photography is usually allowed, but ask first</li>
-            <li>• Accept blessed bread and fava beans as tokens of blessing</li>
-            <li>• Many altars offer traditional Sicilian foods to sample</li>
-          </ul>
-        </Card>
-      </div>
     </div>
+{% endblock %}

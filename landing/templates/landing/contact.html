@@ -1,8 +1,9 @@
 {% extends "landing/base.html" %}
 {% load static %}
-{% block title %}
-    Contact Us
-    - St. Joseph Altars of New Orleans
+{% block title %}Contact Us | stjosephaltar.org{% endblock %}
+{% block head_extra %}
+    <!-- Add any additional CSS or JavaScript here -->
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}" />
 {% endblock %}
 {% block main_content %}
     <div class="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50 py-20 px-6">

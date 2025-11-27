@@ -85,8 +85,7 @@
                                                     <b>Name:</b> {{ contact.name|default:"Not specified" }}
                                                 </p>
                                                 <p>
-                                                    <b>Type:</b> {{ contact.get_type_display|default:"Not
-                                                    specified" }}
+                                                    <b>Type:</b> {{ contact.get_type_display|default:"Not specified" }}
                                                 </p>
                                                 {% if contact.phone %}
                                                     <p>
@@ -130,8 +129,7 @@
                                         <div class="accordion-body">
                                             {% for event in altar.event_set.all %}
                                                 <p>
-                                                    <b>Type:</b> {{ event.get_type_display|default:"Not
-                                                    specified" }}
+                                                    <b>Type:</b> {{ event.get_type_display|default:"Not specified" }}
                                                 </p>
                                                 {% if event.date %}
                                                     <p>
@@ -140,8 +138,8 @@
                                                 {% endif %}
                                                 {% if event.start and event.end %}
                                                     <p>
-                                                        <b>Time:</b> {{ event.start|time:"g:i A" }} to {{
-                                                        event.end|time:"g:i A" }}
+                                                        <b>Time:</b> {{ event.start|time:"g:i A" }}
+                                                        to {{event.end|time:"g:i A" }}
                                                     </p>
                                                 {% elif event.start %}
                                                     <p>

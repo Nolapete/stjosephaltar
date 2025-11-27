@@ -1,72 +1,60 @@
+{% extends "landing/base.html" %}
+{% load static %}
 <footer className="bg-gradient-to-br from-green-900 to-green-950 text-white py-16 px-6">
-      <div className="max-w-6xl mx-auto">
+    <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
-          <div className="md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center">
-                <Heart className="w-6 h-6 text-white fill-white" />
-              </div>
-              <span className="text-xl">St. Joseph Altars</span>
+            <div className="md:col-span-1">
+                <div className="flex items-center gap-2 mb-4">
+                    <div className="w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center">
+                        <Heart className="w-6 h-6 text-white fill-white" />
+                    </div>
+                    <span className="text-xl">St. Joseph Altars</span>
+                </div>
+                <p className="text-green-200 leading-relaxed">
+                    Preserving and celebrating Sicilian heritage in New Orleans through faith, food, and community.
+                </p>
             </div>
-            <p className="text-green-200 leading-relaxed">
-              Preserving and celebrating Sicilian heritage in New Orleans through faith, food, and community.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="mb-4">About</h4>
-            <ul className="space-y-2">
-              {links.about.map((link, index) => (
-                <li key={index}>
-                  <a href={link.href} className="text-green-200 hover:text-orange-300 transition-colors">
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="mb-4">Visit</h4>
-            <ul className="space-y-2">
-              {links.visit.map((link, index) => (
-                <li key={index}>
-                  <a href={link.href} className="text-green-200 hover:text-orange-300 transition-colors">
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="mb-4">Resources</h4>
-            <ul className="space-y-2">
-              {links.resources.map((link, index) => (
-                <li key={index}>
-                  <a href={link.href} className="text-green-200 hover:text-orange-300 transition-colors">
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+            <div>
+                <h4 className="mb-4">About</h4>
+                <ul className="space-y-2">
+                    {links.about.map((link, index) => (
+                    <li key={index}>
+                        <a href={link.href} className="text-green-200 hover:text-orange-300 transition-colors">{link.label}</a>
+                    </li>
+                    ))}
+                </ul>
+            </div>
+            <div>
+                <h4 className="mb-4">Visit</h4>
+                <ul className="space-y-2">
+                    {links.visit.map((link, index) => (
+                    <li key={index}>
+                        <a href={link.href} className="text-green-200 hover:text-orange-300 transition-colors">{link.label}</a>
+                    </li>
+                    ))}
+                </ul>
+            </div>
+            <div>
+                <h4 className="mb-4">Resources</h4>
+                <ul className="space-y-2">
+                    {links.resources.map((link, index) => (
+                    <li key={index}>
+                        <a href={link.href} className="text-green-200 hover:text-orange-300 transition-colors">{link.label}</a>
+                    </li>
+                    ))}
+                </ul>
+            </div>
         </div>
-
         <div className="border-t border-green-800 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-green-300 text-sm">
-              © 2025 St. Joseph Altars of New Orleans. Celebrating tradition with love.
-            </p>
-            <div className="flex gap-6 text-sm">
-              <a href="#" className="text-green-300 hover:text-orange-300 transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-green-300 hover:text-orange-300 transition-colors">
-                Contact Us
-              </a>
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                <p className="text-green-300 text-sm">© 2025 St. Joseph Altars of New Orleans. Celebrating tradition with love.</p>
+                <div className="flex gap-6 text-sm">
+                    <a href="#"
+                       className="text-green-300 hover:text-orange-300 transition-colors">Privacy Policy</a>
+                    <a href="#"
+                       className="text-green-300 hover:text-orange-300 transition-colors">Contact Us</a>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </footer>
+    </div>
+</footer>
